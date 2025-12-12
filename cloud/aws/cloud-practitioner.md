@@ -62,13 +62,12 @@
 - fully control over virtual server setup with OS, instance type, software and network accessibility
 - supports vertical scaling by resizing CPU instance and memory based on dynamic demand
 
-#### (1) Step to run
-
-(a) Launch instance
+### (1) Step to run
+#### (a) Launch instance
 - select an Amazon Machine Image (the template that defines the operating system and initial software)
 - select an instance type to decide CPU, memory, and network performance
 
-(b) Connect (either one)
+#### (b) Connect (either one)
 - use Secure Shell (SSH) to connect to Linux instances
   (key-based authentication -> via port 22 -> remote control the Linux machine)
 - use Remote Desktop Protocol (RDP) to connect Windows instances
@@ -76,13 +75,13 @@
 - use AWS Systems Manager to secure access without opening ports
   (IAM for permission -> manage through Session Manager or Commands)
 
-(c) Use
+#### (c) Use
 - Run commands and install required software
 - Deploy and run applications
 - Manage files, storage, and system resources
 
 
-#### (2) Comparison: EC2 vs. on-premises
+### (2) Comparison: EC2 vs. on-premises
 
 | Aspect | On-Premises | Amazon EC2 |
 |-------|------------|------------|
@@ -92,7 +91,7 @@
 | Payment | Pay even if unused | Pay only when running |
 
 
-#### (3) Launch EC2
+### (3) Launch EC2
 
 | Step | Statement |
 |------|-----------|
@@ -109,7 +108,7 @@
 *An AMI is used to pre-configure the operating system and software for an EC2 instance.*
 
 
-#### (4) Pricing
+### (4) Pricing
 
 | Pricing Option | Features | Use Cases | Restrictions |
 |---------------|--------------------------|-------------|----------------|
@@ -127,20 +126,20 @@
 
 ### (B) Auto Scaling and Load Balancing
 
-#### (1) Scaling
+### (1) Scaling
 
-(a) Scalability
+#### (a) Scalability
 - the ability of a system to handle increased workload by adding resources
 - focuses on long-term growth and capacity planning
 - **Scale-up** (increase instance size / add CPU and memory)
 
-(b) Elasticity
+#### (b) Elasticity
 - the ability to automatically adjust resources based on real-time demand
 - focuses on short-term demand changes
 - **Scale-out** (add instances when demand rises)
 - **Scale-in** (remove instances when demand drops)
 
-(c) Comparison: Scale Out vs. Scale Up
+#### (c) Comparison: Scale Out vs. Scale Up
 
 | Aspect | Scale Out (Horizontal Scaling) | Scale Up (Vertical Scaling) |
 |------|-------------------------------|-----------------------------|
@@ -150,9 +149,9 @@
 | Fault tolerance | Higher, failure of one instance does not stop the system | Lower, relies on one instance |
 | Limitation | Requires traffic distribution | Has size and hardware limits |
 
-​(d) Real-Time Scaling, Availability, and Cost Efficiency
+#### ​(d) Real-Time Scaling, Availability, and Cost Efficiency
 - **Real-time scaling**<br/>
-*automatically launched or terminated EC2 instances based on real-time performance metrics.*
+*Automatically launched or terminated EC2 instances based on real-time performance metrics.*
 - **Monitoring and Scaling Triggers**<br/>
 *CloudWatch collects and monitors metrics which trigger scaling actions, when predefined thresholds are reached.*
 - **High Availability and Fault Tolerance**<br/>
@@ -160,7 +159,7 @@
 - **Cost-efficiency**<br/>
 *Resources are provisioned only when needed, and unused instances are terminated when demand decreases, ensuring cost efficiency.*
 
-(e) Auto Scaling Group Configuration
+#### (e) Auto Scaling Group Configuration
 
 | Setting | Description | Purpose |
 |--------|-------------|------------------------|
