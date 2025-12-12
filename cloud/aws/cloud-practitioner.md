@@ -1,5 +1,3 @@
-review this notes:
-
 # AWS Certified Cloud Practitioner
 
 <br/>
@@ -96,7 +94,7 @@ review this notes:
 
 #### (3) Launch EC2
 
-| Step | Statement | 
+| Step | Statement |
 |------|-----------|
 | 1 | Assign a name to the EC2 instance for identification. |
 | 2 | Select an Amazon Machine Image (AMI) to define the operating system and base software. |
@@ -153,13 +151,13 @@ review this notes:
 | Limitation | Requires traffic distribution | Has size and hardware limits |
 
 ​(d) Real-Time Scaling, Availability, and Cost Efficiency
-- **Real-time scaling**
+- **Real-time scaling**<br/>
 *automatically launched or terminated EC2 instances based on real-time performance metrics.*
-- **Monitoring and Scaling Triggers**
+- **Monitoring and Scaling Triggers**<br/>
 *CloudWatch collects and monitors metrics which trigger scaling actions, when predefined thresholds are reached.*
-- **High Availability and Fault Tolerance**
+- **High Availability and Fault Tolerance**<br/>
 *EC2 instances are distributed across multiple Availability Zones within a Region to remove single points of failure and improve fault tolerance.*
-- **Cost-efficiency**
+- **Cost-efficiency**<br/>
 *Resources are provisioned only when needed, and unused instances are terminated when demand decreases, ensuring cost efficiency.*
 
 (e) Auto Scaling Group Configuration
@@ -170,5 +168,6 @@ review this notes:
 | Desired capacity | The ideal number of EC2 instances needed to handle the current workload | Auto Scaling continuously attempts to maintain this number; defaults to the minimum capacity if not specified |
 | Maximum capacity | The upper limit on the number of EC2 instances that can be launched | Prevents over-scaling, controls costs, and defines the scaling boundary |
 
-
 <br/>
+
+## III.  
