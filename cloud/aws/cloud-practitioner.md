@@ -33,7 +33,9 @@ review this notes:
 - mix cloud and on-premises solutions
 - keep legacy on-premises, and use cloud for new tasks
 
-### (C) Benefits
+<br/>
+
+### (B) Benefits
 
 - variable expense
 - economies of scale
@@ -42,7 +44,9 @@ review this notes:
 - no physical infrastructure
 - global and quick deployment
 
-### (D) Global Infrastructure
+<br/>
+
+### (C) Global Infrastructure
 
 - geographical distribution, plus 3+ availability zones (AZ)
 - AZ provides high availability and fault tolerance
@@ -103,8 +107,9 @@ review this notes:
 | 7 | Add user data to run startup scripts and install required services. |
 | 8 | Launch the instance and verify access using its public IP address. |
 
-*The required configurations are Amazon Machine Image (AMI), instance type, and storage.*
+- *The required configurations are Amazon Machine Image (AMI), instance type, and storage.*
 *An AMI is used to pre-configure the operating system and software for an EC2 instance.*
+
 
 #### (4) Pricing
 
@@ -118,8 +123,9 @@ review this notes:
 | Dedicated Hosts | Full physical server control | Compliance, licensing, hardware-level control | General-purpose workloads |
 | Dedicated Instances | Hardware isolation | Isolation without server placement control | When full host control is required |
 
-*Spot Instances are for interruptible workloads to save money; On-Demand is for uncertain usage that needs stable, uninterrupted capacity.*
+- *Spot Instances are for interruptible workloads to save money; On-Demand is for uncertain usage that needs stable, uninterrupted capacity.*
 
+<br/>
 
 ### (B) Auto Scaling and Load Balancing
 
@@ -137,6 +143,7 @@ review this notes:
 - **Scale-in** (remove instances when demand drops)
 
 (c) Comparison: Scale Out vs. Scale Up
+
 | Aspect | Scale Out (Horizontal Scaling) | Scale Up (Vertical Scaling) |
 |------|-------------------------------|-----------------------------|
 | Scaling method | Add more EC2 instances | Increase CPU or memory of an EC2 instance |
@@ -156,6 +163,7 @@ review this notes:
 *Resources are provisioned only when needed, and unused instances are terminated when demand decreases, ensuring cost efficiency.*
 
 (e) Auto Scaling Group Configuration
+
 | Setting | Description | Purpose |
 |--------|-------------|------------------------|
 | Minimum capacity | The lowest number of EC2 instances required for the application to run | Ensures the system never scales below a safe baseline; this number of instances launches immediately when the auto scaling group is created |
