@@ -169,4 +169,148 @@
 
 <br/>
 
-## III.  
+
+### (2) Directing Traffic with Elastic Load Balancing
+
+##### (a) Elastic Load Balancing
+- Problem: overloading EX2 instances with increasing traffic, leading to poor performance and potential service failures
+- automatically distributes incoming traffic across multiple EC2 instances
+- acts as a single entry point for traffic and routes requests only to healthy, available instances.
+- fully managed by AWS, instead of manual patching, upgrades, failover, and maintenance
+
+#### (b) ELB and Auto Scaling
+- auto Scaling adjusts the number of EC2 instances based on demand, while ELB distributes traffic evenly across those instances.
+- ELB automatically updates its routing without requiring changes to the application, when new instances are added or removed by Auto Scaling
+
+#### (c) Benefits
+- decouples frontend and backend tiers by providing a single endpoint, removing the need for services to track individual instance addresses.
+- enables independent scaling of each tier, allowing frontend and backend resources to scale based on their own demand.
+- improves performance by evenly distributing incoming traffic across available instances.
+- prevents resource imbalance by avoiding overloaded instances and reducing idle capacity.
+- enhances scalability and resilience by automatically adjusting to traffic changes without manual reconfiguration.
+- simplifies operations by handling traffic routing, health checks, and fault tolerance as a managed service.
+
+##### (d) Routing Strategies
+- uses routing strategies such as Round Robin, Least Connections, IP Hash, and Least Response Time to optimize traffic distribution and reduce latency
+
+<br/>
+
+### (3) Messaging and Queuing
+
+- messaging and queuing enable asynchronous communication between application components
+- enable systems to continue operating smoothly even when some components are slow, busy, or temporarily unavailable
+
+##### (a) Coupling and Architecture
+- tightly coupled architectures rely on direct communication between components, so a failure in one component can cause cascading failures across the system
+- Loosely coupled architectures use queues or events as intermediaries, allowing components to work independently and improving resilience and fault tolerance
+
+#### (b) Amazon SQS (Message Queuing)
+- stores messages until a consumer is ready to process them, making it ideal for buffering workloads and decoupling services
+
+#### (c) Amazon SNS (Publish–Subscribe)
+- deliver messages immediately to multiple subscribers, making it suitable for notifications, alerts, and fan-out messaging
+
+#### (d) Event-Driven Communication
+- enables event-driven architectures by routing events between services, allowing applications to scale independently and remain loosely coupled
+
+#### (e) Architecture Impact
+- move from monolithic to microservices architectures
+- isolating failures and enabling independent service communication through messaging services, increasing availability and scalability
+
+<br/> 
+
+## III. Exploring Compute Services
+
+### (A) Overview
+
+### (1) Managed Compute Services
+- shift more operational responsibility to AWS to manage servers and infrastructure
+- Customers mainly configure the service and deploy applications
+- Examples: Elastic Load Balancing, Amazon SQS, and Amazon SNS.
+
+### (1) Serverless Computing
+- remove the need to provision or manage any servers
+- Customers focus entirely on application logic and code
+- AWS fully manages infrastructure, scaling, availability, and maintenance
+
+| Service Model | Customer Responsibility |
+|--------------|-------------------------|
+| Unmanaged | Configure OS, security patches, and network settings |
+| Managed | Choose deployment options and configure environment settings |
+| Fully managed | Focus only on writing and deploying code |
+
+<br/>
+
+### (B) AWS Lambda
+- Lambda functions are invoked by events such as file uploads, data streams, or application requests
+- automatically provisions the execution environment and handles scaling, availability, patching, and maintenance
+- Lambda scales up or down automatically based on the number of incoming events
+- The maximum execution time for a Lambda function is 15 minutes
+
+### (1) Responsibility Model
+- manages the infrastructure, execution environment, scaling, and availability, while customers focus on writing and securing their application code
+
+### (2) Pricing and Performance
+- charges only for the compute time used, and performance can be tuned by adjusting the function’s memory allocation
+
+### (3) Runtime and Language Support
+- supports multiple programming languages through managed runtimes and allows custom runtimes for unsupported languages
+
+### (4) Integration with AWS Services
+- integrates seamlessly with other AWS services, enabling fully serverless applications without managing servers
+
+### (5) Use Cases
+- file processing, request handling, real-time data processing and background jobs
+
+### (6) Setup Procedures
+- An SQS queue automatically triggers a Lambda function when a new message is added.
+- Lambda function needs the correct IAM permissions to read messages from the SQS queue.
+
+| Step | Statement |
+|------|-----------|
+| 1 | Create an SQS queue and send the test messages to the queue. |
+| 2 | Use SQS blueprint, pre-confugures tigger and codes to create the Lambda function. |
+| 3 | Assign the execution role with SQS poller policy, enable Lambda to retrieve messages from the queue. |
+| 4 | the Lambda function reads messages from the SQS queue and logs message details. |
+| 5 | Once messages are processed, they are automatically removed from the queue. |
+| 6 | Lambda execution metrics and logs are viewed using Amazon CloudWatch. |
+| 7 | CloudWatch log streams confirm that messages were successfully processed by the Lambda function. |
+
+- Integrating SQS with Lambda enables a simple, scalable event-driven architecture where messages are processed automatically without managing servers.
+- Automated photo processing uses a Lambda function, triggers, and runtimes, with no server or scaling management required.
+
+<br/>
+
+### (C) Containers and Orchestration
+
+### (1) Containers
+- package application code, runtime, dependencies, and configuration into a single unit
+- ensures the application runs the same in development, testing, and production
+- share the host OS, make it lightweight and start faster than VMs
+
+### (2) Orchestration
+- orchestration tools are used to manage deployment, scaling, and recovery for running multiple containers
+- Examples: Amazon ECS (native, simple), Amazon EKS (flexible, portable)
+
+### (3) Amazon ECR
+- stores, manages and versions container images
+- After ECR built, container images are pushed into it
+- When deploying containers, ECS and EKS pull container images from ECR
+
+### (4) Compute Options for running Containers
+
+| Compute Option | Who Manages Servers | Notes |
+|---------------|---------------------|-------|
+| Amazon EC2 | Customer | Full control over virtual machines and infrastructure |
+| AWS Fargate | AWS | Serverless option with automatic scaling |
+| Fargate Compatibility | AWS | Works with both Amazon ECS and Amazon EKS |
+
+### (5) Typical Container Workflow
+| Step | Statement |
+|------|-----------|
+| 1 | Build a container image with application code and required dependencies. |
+| 2 | Push the container image to Amazon Elastic Container Registry (ECR). |
+| 3 | Choose a container orchestration service, such as Amazon ECS or Amazon EKS. |
+| 4 | Select a compute option to run containers, either Amazon EC2 or AWS Fargate. |
+| 5 | Deploy containers and allow the orchestration service to handle scaling and management automatically. |
+
